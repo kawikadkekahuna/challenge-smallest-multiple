@@ -6,9 +6,34 @@
  * @return { Number }         Lowest Positive Number that is evenly divisible by all numbers
  *                            between 1 and `ceiling`
  */
-module.exports = function( ceiling ) {
+module.exports = function(ceiling) {
   // do work here
+  var startingMultiple = 2;
+  var counter = 0;
+  var multiplier = 1;
+  var startingNumber = ceiling;
+  var numberFinder = true;
+  var god = false;
+  var comparableNumFinderRunning = true;
+  var smallestPositiveMultiple;
 
 
-  return 0;
+  while (comparableNumFinderRunning) {
+    var smallestPositiveMultiple = ceiling * multiplier;
+    while (numberFinder) {
+      if (smallestPositiveMultiple % startingMultiple === 0) {
+        startingMultiple++;
+        if (ceiling === startingMultiple) {
+          return smallestPositiveMultiple;
+          comparableNumFinderRunning = false;
+        }
+      } else {
+        startingMultiple = 2;
+        numberFinder = false;
+      }
+    }
+    multiplier++;
+    numberFinder = true;
+  }
+
 };
